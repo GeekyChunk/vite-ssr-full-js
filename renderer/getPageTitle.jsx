@@ -1,6 +1,13 @@
 export { getPageTitle }
 
 function getPageTitle(pageContext) {
-    const title = (pageContext.exports.documentProps || {}).title || (pageContext.documentProps || {}).title || 'Demo'
-    return title
+    try {
+        const title = (pageContext.exports.documentProps || {}).title ||
+            (pageContext.documentProps || {}).title || 'Demo'
+        return title
+
+    } catch {
+        const title = "Demo"
+        return title
+    }
 }
